@@ -1,10 +1,9 @@
 import React, { useCallback, useState } from 'react';
-import { Card, List, ListItem, CardContent, ButtonGroup, Button } from '@mui/material';
+import { Card, List, ListItem, CardContent } from '@mui/material';
 import NewTaskCard from './NewTaskCard';
-import TaskCard from './Task';
+import TaskCard from './TaskCard/TaskCard';
 import { FILTER, Task } from './types';
-import FilterButton from './FilterButton';
-import { FILTER_NAME } from './settings-filter';
+import FilterBar from './FilterBar/FilterBar';
 
 
 const Todolist: React.FC = () => {
@@ -53,18 +52,7 @@ const Todolist: React.FC = () => {
             <h1>Todolist</h1>
             <Card variant="outlined" className="task-card">
                 <CardContent>
-                    <ButtonGroup fullWidth variant="contained" style={{ margin: '10px 0', gap: '8px', boxShadow: 'none', border: 'none' }}>
-                        {
-                            [FILTER.ALL, FILTER.ACTIVE, FILTER.COMPLETED].map(curFilter => {
-                                return (<FilterButton filter={curFilter} activeFilter={activeFilter} onClick={() => filterHandle(curFilter)}>
-                                    {FILTER_NAME[FILTER[curFilter]]}
-                                </FilterButton>);
-                            })
-                        }
-                        <Button size="small" variant="outlined" color="secondary" onClick={deleteCompletedTasks} style={{ borderRadius: '20px' }}>
-                            Удалить выполненные
-                        </Button>
-                    </ButtonGroup>
+                    <FilterBar filters={[FILTER.ALL, FILTER.ACTIVE, FILTER.COMPLETED]} activeFilter={activeFilter} onClickFilter={filterHandle} onClickDel ={deleteCompletedTasks}/>
                     <NewTaskCard addTask={addTask} />
                     <List>
                         {getTasks().map(task => (

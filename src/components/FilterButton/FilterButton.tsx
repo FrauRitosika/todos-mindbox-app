@@ -11,7 +11,7 @@ type TFilterButton = {
 const FilterButton = ({ filter, activeFilter, onClick, children }: TFilterButton) => {
 
     return (
-        <Button size="small" onClick={onClick} variant={filter === activeFilter ? 'contained' : 'outlined'} style={{ borderRadius: '20px' }}>
+        <Button size="small" aria-label="filter" onClick={onClick} variant={filter === activeFilter ? 'contained' : 'outlined'} style={{ borderRadius: '20px' }}>
             {children}
         </Button>
     );
