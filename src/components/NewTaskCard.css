@@ -1,0 +1,13 @@
+.task-card {
+    max-width: 600px; 
+    margin: 20px auto; 
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-button {
+    width: 120px; 
+}
